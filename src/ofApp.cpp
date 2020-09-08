@@ -12,6 +12,7 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
+    
         int xPos = 0;
         int yPos = 0;
 		ofDrawRectangle(xPos+0,yPos+10,60,10);
@@ -29,7 +30,6 @@ void ofApp::draw(){
 		ofDrawLine(xPos+10,yPos+10,xPos+20,yPos+0);
 		ofDrawLine(xPos+20,yPos+0,xPos+40,yPos+0);
 		ofDrawLine(xPos+40,yPos+0,xPos+50,yPos+10);
-
 }
 
 //--------------------------------------------------------------
