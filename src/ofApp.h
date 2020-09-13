@@ -1,10 +1,14 @@
 #pragma once
 
 #include "ofMain.h"
+#include "Car.h"
 
 class ofApp : public ofBaseApp{
 
 	public:
+
+		ofApp(): c1(0,0){};
+		
 		void setup();
 		void update();
 		void draw();
@@ -20,5 +24,7 @@ class ofApp : public ofBaseApp{
 		void windowResized(int w, int h);
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
+
+		Car c1;
 		
 };
