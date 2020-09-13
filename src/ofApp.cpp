@@ -4,34 +4,45 @@
 //--------------------------------------------------------------
 void ofApp::setup()
 {
-        c1.setX(0);
-        c1.setY(0);
+        lanes = floor(ofGetHeight() / 40.0);
+        int lane = 0;
+        for (int i = 0; i < lanes; i++)
+        {
+                Car c(0,lane);
+                cars.push_back(c);
+                lane += 40;
+        }
 }
 
 //--------------------------------------------------------------
 void ofApp::update()
 {
-        if (c1.getDirection() == 1)
+        for (int i = 0; i < lanes; i++)
         {
-                // Car moving left to right, check reaching right border
-                if (c1.getX() + 60 >= ofGetWidth())
+                int delta = round(ofRandom(1) * cars[i].getSpeed());
+                if (cars[i].getDirection() == 1)
                 {
-                        c1.setDirection(-1);
+                        // Car moving left to right, check reaching right border
+                        if (cars[i].getX() + 60 >= ofGetWidth())
+                        {
+                                cars[i].setDirection(-1);
+                        }
+                        else
+                        {
+                                cars[i].setX(cars[i].getX() + delta);
+                        }
                 }
                 else
                 {
-                        c1.setX(c1.getX() + c1.getSpeed());
-                }
-        }
-        else
-        {
-                // Car moving right to left
-                if (c1.getX() <= 0)
-                {
-                        c1.setDirection(1);
-                }
-                else {
-                        c1.setX(c1.getX() - c1.getSpeed());
+                        // Car moving right to left
+                        if (cars[i].getX() <= 0)
+                        {
+                                cars[i].setDirection(1);
+                        }
+                        else
+                        {
+                                cars[i].setX(cars[i].getX() - delta);
+                        }
                 }
         }
 }
@@ -39,9 +50,12 @@ void ofApp::update()
 //--------------------------------------------------------------
 void ofApp::draw()
 {
+        for (int i = 0; i < lanes; i++)
+        {
+                cars[i].draw();
+        }
 
         //Car c1(0, 0);
-        c1.draw();
 
         Car c2(ofGetWidth() - 60, ofGetHeight() - 40);
         c2.draw();

@@ -7,8 +7,6 @@ class ofApp : public ofBaseApp{
 
 	public:
 
-		ofApp(): c1(0,0){};
-		
 		void setup();
 		void update();
 		void draw();
@@ -25,6 +23,8 @@ class ofApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
 
-		Car c1;
+		static const int NUM_CARS = 10;
+		vector<Car> cars;
+		int lanes;
 		
 };
